@@ -1,0 +1,7 @@
+[tool.taskipy.tasks]
+setup = "bash -c 'python3 -m venv backend/.venv && backend/.venv/bin/pip install -r backend/requirements.txt && cp -n .env.example frontend/.env.local || true && cd frontend && npm install'"
+install = "task setup"
+backend = "backend/.venv/bin/uvicorn app.main:app --reload --port 8000 --app-dir backend"
+frontend = "bash -c 'cd frontend && ./node_modules/.bin/next dev -p 3000'"
+dev = "bash -c 'task backend & task frontend & wait'"
+docker = "docker compose up --build"
