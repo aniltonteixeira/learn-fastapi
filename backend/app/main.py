@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
 app = FastAPI(title="FastAPI Backend")
 
@@ -17,12 +18,18 @@ app.add_middleware(
 
 @app.get("/")
 def root() -> dict[str, str]:
-    return {"message": "FastAPI running"}
+    return {"message": "FastAPI funcinando"}
 
 
-@app.get("/api/health")
-def health() -> dict[str, str]:
+class LoginRequest(BaseModel):
+    email: str
+    password: str
+
+
+@app.post("/api/login")
+def login(data: LoginRequest) -> dict[str, str]:
     return {
-        "status": "ok tudo certo com o fast api",
-        "service": "fastapi",
+        "message": "Dados recebidos com sucesso",
+        "email": data.email,
+        "password_length": str(len(data.password)),
     }
