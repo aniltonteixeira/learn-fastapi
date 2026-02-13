@@ -4,8 +4,7 @@ import { FormEvent, useState } from "react";
 
 type LoginResponse = {
   message: string;
-  email: string;
-  password_length: string;
+  next_step?: string;
 };
 
 export function LoginForm() {
@@ -19,10 +18,8 @@ export function LoginForm() {
     setLoading(true);
     setStatus(null);
 
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-
     try {
-      const response = await fetch(`${apiUrl}/api/login`, {
+      const response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -35,7 +32,7 @@ export function LoginForm() {
       }
 
       const data = (await response.json()) as LoginResponse;
-      setStatus(`Login enviado: ${data.email}`);
+      setStatus(data.message);
     } catch (submitError) {
       setStatus(submitError instanceof Error ? submitError.message : "Erro inesperado");
     } finally {
