@@ -46,7 +46,7 @@ export function LoginForm() {
   return (
     <form className="mt-6 space-y-4" onSubmit={onSubmit}>
       <div className="space-y-1">
-        <label htmlFor="email" className="block text-base font-medium leading-none text-skybrand-900 md:text-[28px]">
+        <label htmlFor="email" className="block text-base font-medium leading-none text-skybrand-900 md:text-2xl">
           Email
         </label>
         <input
@@ -61,7 +61,7 @@ export function LoginForm() {
       </div>
 
       <div className="space-y-1">
-        <label htmlFor="password" className="block text-base font-medium leading-none text-skybrand-900 md:text-[28px]">
+        <label htmlFor="password" className="block text-base font-medium leading-none text-skybrand-900 md:text-2xl">
           Senha
         </label>
         <input

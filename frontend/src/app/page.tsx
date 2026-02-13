@@ -14,11 +14,11 @@ export default function LoginPage() {
               <img
                 src={brandLogoPath}
                 alt="Logo"
-                className="h-auto w-full max-w-[240px] object-contain"
+                className="mx-auto h-auto w-full max-w-[240px] object-contain"
               />
 
               <h1 className="mt-7 max-w-[310px] text-3xl font-semibold leading-tight text-skybrand-600">
-                Emissao inteligente de NFS-e sem complicacao.
+                Emissão inteligente de NFS-e.
               </h1>
 
               <LoginForm />
